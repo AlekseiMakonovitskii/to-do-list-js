@@ -86,7 +86,10 @@ const uploadLocalStorage = () => {
 };
 
 const downloadLocalStorage = () => {
-  tasks = JSON.parse(localStorage.getItem('tasks'));
+  const res = JSON.parse(localStorage.getItem('tasks'));
+  if (res.length > 0) {
+    tasks = res;
+  }
 };
 
 const init = () => {
