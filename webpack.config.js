@@ -8,7 +8,7 @@ module.exports = {
     filename: 'index.js',
   },
 
-  mode: 'production',
+  mode: 'development',
 
   plugins: [
     new HtmlWebpackPlugin({
