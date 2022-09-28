@@ -6,21 +6,7 @@ const toDoInput = document.querySelector(`#toDoInput`);
 const addBtn = document.querySelector(`.addBtn`);
 
 let tasks = [
-  {
-    body: 'Take a bath',
-    date: Date.now(),
-    id: uuidv4(),
-  },
-  {
-    body: 'Render new video',
-    date: Date.now(),
-    id: uuidv4(),
-  },
-  {
-    body: 'Walk with Joe',
-    date: Date.now(),
-    id: uuidv4(),
-  },
+
 ];
 
 const renderTask = tasks => {
