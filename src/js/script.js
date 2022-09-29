@@ -14,8 +14,8 @@ const renderTask = tasks => {
     const html = `
 			<li id="${element.id}">
 				<div class="left-side">
-					<input type="checkbox" class="checkedMark">
-					<p>${element.body}</p>
+					<input type="checkbox" class="checkedMark" ${element.done ? 'checked' : ''}>
+					<p class="${element.done ? 'done' : ''}">${element.body}</p>
 				</div>
 				<button class="close" id="${element.id}">X</button>
 			</li>
@@ -37,6 +37,7 @@ const createTask = () => {
     body: `${toDoInput.value.length > 0 ? toDoInput.value : 'Nothing'}`,
     date: Date.now(),
     id: uuidv4(),
+    done: false,
   };
 
   tasks.push(task);
@@ -62,9 +63,21 @@ const addDeleteEvents = () => {
   elements.forEach(el => el.addEventListener(`click`, deleteTask));
 };
 
+
+
 const setDone = e => {
   if (!e.target.classList.contains('checkedMark')) return;
   e.target.parentElement.querySelector(`p`).classList.toggle(`done`);
+  const element = tasks.find(el => el.id === e.target.parentElement.parentElement.id);
+
+  if (!element.done) {
+    element.done = true;
+    uploadLocalStorage();
+  } else {
+    element.done = false;
+    uploadLocalStorage();
+  }
+   
 };
 
 const uploadLocalStorage = () => {
@@ -90,3 +103,6 @@ const init = () => {
 };
 
 init();
+
+
+console.log(tasks);
